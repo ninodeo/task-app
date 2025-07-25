@@ -1,17 +1,24 @@
-# version: "3.8"
+version: "3.8"
+
 services:
   app:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
     container_name: task-app
-    working_dir: /var/www
+    working_dir: /var/www/
     volumes:
       - ./src:/var/www
     ports:
       - "8000:8000"
     depends_on:
       - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: task_db
+      DB_USERNAME: root
+      DB_PASSWORD: root
 
   nginx:
     image: nginx:alpine
