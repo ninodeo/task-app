@@ -1,6 +1,6 @@
 FROM php:8.3-fpm
 
-# Install PHP dependencies + Node.js 20
+# Install PHP dependencies + Node.js 20 via NodeSource
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -19,15 +19,12 @@ RUN node -v && npm -v
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Set working directory
 WORKDIR /var/www
-
-# Copy project files
 COPY ./src /var/www
 
-# Copy entrypoint script
-COPY ./docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Default command
-ENTRYPOINT ["entrypoint.sh"]
+RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache \
+    && chown -R www-data:www-data /var/www
+
+CMD ["php-fpm"]
