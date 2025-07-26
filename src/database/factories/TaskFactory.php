@@ -17,7 +17,10 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(4),
+            'description' => $this->faker->paragraph(),
+            'is_completed' => $this->faker->boolean(30), // 30% chance it's completed
+            'user_id' => null, // This will be set when creating the task
         ];
     }
 }
