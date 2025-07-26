@@ -28,4 +28,4 @@ WORKDIR /var/www
 # Copy source code and entrypoint script
 COPY ./src /var/www
 COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN sed -i 's/\r//' /usr/local/bin/entrypoint.sh && chmod +x /usr/local/bin/entrypoint.sh
