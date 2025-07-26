@@ -28,8 +28,8 @@ A simple Task Management System built with **Laravel 12**, **Livewire**, **Tailw
 1. **Clone the Repo**
 
 ```bash
-git clone https://github.com/your-username/task-manager.git
-cd task-manager
+git clonehttps://github.com/ninodeo/task-app.git
+cd task-app
 ```
 
 2. **Copy `.env` File**
@@ -82,8 +82,8 @@ exit
 1. **Clone and Enter Project**
 
 ```bash
-git clone https://github.com/your-username/task-manager.git
-cd task-manager/src
+git clone https://github.com/ninodeo/task-app.git
+cd task-app
 ```
 
 2. **Install PHP & Node Dependencies**
@@ -108,7 +108,7 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
-5. **Compile Assets (Tailwind & Livewire)**
+5. **Compile Assets (Tailwind & Livewire) - run command inside src folder**
 
 ```bash
 npm run dev
