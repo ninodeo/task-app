@@ -1,4 +1,4 @@
-# 📝 Task Management System
+# 📝 Task Application
 
 A simple task management system built with **Laravel 12**, **Laravel Breeze**, **Livewire**, and **Tailwind CSS**, containerized with **Docker**.
 
