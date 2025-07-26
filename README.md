@@ -1,147 +1,136 @@
-# ✅ Laravel Task Management System
+# 📝 Task Management System
 
-A simple Task Management System built with **Laravel 12**, **Livewire**, **Tailwind CSS**, and **Docker**. It supports both Dockerized and traditional local environments.
-
----
-
-## 📂 Features
-
-- 🔐 Authentication (Laravel Breeze)
-- 👥 Role-based Access Control (Admin/User)
-- ✅ Task CRUD (Create, Read, Update, Delete)
-- 🔄 Task Completion Toggle
-- 🔎 Livewire-based Search + Pagination
-- 💨 Tailwind CSS for UI
-- 🐳 Docker-ready and Dev-friendly
+A simple task management system built with **Laravel 12**, **Laravel Breeze**, **Livewire**, and **Tailwind CSS**, containerized with **Docker**.
 
 ---
 
-## 🚀 Running with Docker (Recommended)
+## 📌 Project Overview
 
-### 📦 Prerequisites
+This project is a full-featured task management system with the following:
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
+- User authentication (via Laravel Breeze & Livewire)
+- Role-based access (Admin & Standard User)
+- Task CRUD with completion toggle
+- Search & pagination
+- Fully Dockerized for easy setup
 
-### ⚙️ Instructions
+---
 
-1. **Clone the Repo**
+## ⚙️ Tech Stack
+
+- **PHP 8.3**
+- **Laravel 12**
+- **Laravel Breeze** (with Livewire)
+- **Tailwind CSS**
+- **MySQL 8**
+- **Docker / Docker Compose**
+- **Nginx**
+
+---
+
+## ✅ Requirements
+
+- Docker & Docker Compose (for containerized setup)  
+  OR  
+- PHP >= 8.2, Composer, Node.js, and MySQL (for traditional setup)
+
+---
+
+## 🐳 Docker Setup (Recommended)
 
 ```bash
-
+# 1. Clone the repository
 git clone https://github.com/ninodeo/task-app.git
 cd task-app
+
+# 2. Build the containers
+docker compose build
+
+# 3. Start the app
+docker compose up
+
+# 4. Wait until dependencies are installed (first time only)
+
+# 5. Run migrations and seed data
+docker compose exec app php artisan migrate:fresh --seed
+
+# 6. Open the app in your browser
+http://localhost:8080
 ```
 
-2. **Copy `.env` File**
+> 📝 **Note:** The command `php artisan migrate:fresh --seed` will:
+> - Run the database migrations
+> - Seed the database with initial users and dummy tasks
+> - Applies to **both Docker and traditional setup**
 
-```bash
-cp src/.env.example src/.env
-```
+### 👥 Seeded Users
 
-3. **Start Docker**
+- **Admin User**  
+  📧 `admin@example.com`  
+  🔒 `password`
 
-```bash
-docker-compose up -d --build
-```
-
-4. **Run Migrations and Seeders**
-
-```bash
-docker exec -it task-app php artisan migrate --seed
-```
-
-5. **Compile Assets (Tailwind & Livewire)**
-
-```bash
-docker exec -it task-app bash
-cd /var/www
-npm install
-npm run dev
-exit
-```
-
-6. **Visit the App**
-
-- http://localhost:8080
+- **Standard User**  
+  📧 `user@example.com`  
+  🔒 `password`
 
 ---
 
-## 💻 Running Locally Without Docker
-
-### 🔧 Requirements
-
-- PHP >= 8.2
-- Composer
-- Node.js >= 18
-- NPM
-- MySQL or MariaDB
-- Git
-
-### 📌 Setup Steps
-
-1. **Clone and Enter Project**
+## 🧰 Traditional Setup (Without Docker)
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/ninodeo/task-app.git
-cd task-app
-```
 
-2. **Install PHP & Node Dependencies**
+# 2. Navigate to Laravel app folder
+cd task-app/src
 
-```bash
+# 3. Install PHP dependencies
 composer install
+
+# 4. Install frontend assets
 npm install
-```
 
-3. **Copy `.env` File**
-
-```bash
+# 5. Create environment file
 cp .env.example .env
-```
 
-Then update DB credentials in `.env`.
+# 6. Configure your database credentials in `.env`
 
-4. **Run Migrations & Seeders**
+# 7. Run migrations & seed the database
+php artisan migrate:fresh --seed
 
-```bash
-php artisan key:generate
-php artisan migrate --seed
-```
+# 8. Start Laravel backend
+php artisan serve
 
-5. **Compile Assets (Tailwind & Livewire) - run command inside src folder**
-
-```bash
+# 9. Start Vite dev server (for Tailwind CSS)
 npm run dev
 ```
 
-6. **Serve App**
+> ✅ Same seeding behavior applies: the `php artisan migrate:fresh --seed` command will populate users and dummy tasks.
 
-```bash
-php artisan serve
+---
+
+## 📂 Project Structure
+
+```
+task-app/
+├── docker/               # Docker-related configs
+│   ├── nginx/
+│   │   └── default.conf
+│   └── php/
+│       ├── Dockerfile
+│       └── entrypoint.sh
+├── src/                  # Laravel application
+│   ├── app/
+│   ├── routes/
+│   ├── resources/
+│   └── ...
+├── docker-compose.yml
+└── README.md
 ```
 
-Visit: [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
 ---
 
-## 🔑 Default Logins (Seeded)
+## 🙋‍♂️ Author
 
-| Role  | Email             | Password |
-| ----- | ----------------- | -------- |
-| Admin | admin@example.com | password |
-| User  | user@example.com  | password |
-
----
-
-## 📁 Notes
-
-- Ensure these directories are writable:
-
-```bash
-chmod -R 775 storage bootstrap/cache
-```
-
-- You can use `npm run build` instead of `dev` for production.
-
----
+**Niño Dimaangay**  
+GitHub: [@ninodeo](https://github.com/ninodeo)
