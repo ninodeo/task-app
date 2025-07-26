@@ -6,11 +6,11 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     container_name: task-app
-    working_dir: /var/www/
+    working_dir: /var/www
     volumes:
       - ./src:/var/www
     ports:
-      - "8000:8000"
+      - "5173:5173" # Vite dev server
     depends_on:
       - db
     environment:
@@ -19,6 +19,7 @@ services:
       DB_DATABASE: task_db
       DB_USERNAME: root
       DB_PASSWORD: root
+    entrypoint: /usr/local/bin/entrypoint.sh
 
   nginx:
     image: nginx:alpine
