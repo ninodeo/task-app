@@ -28,7 +28,8 @@ A simple Task Management System built with **Laravel 12**, **Livewire**, **Tailw
 1. **Clone the Repo**
 
 ```bash
-git clonehttps://github.com/ninodeo/task-app.git
+
+git clone https://github.com/ninodeo/task-app.git
 cd task-app
 ```
 
