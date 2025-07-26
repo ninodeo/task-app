@@ -29,7 +29,7 @@ A simple Task Management System built with **Laravel 12**, **Livewire**, **Tailw
 
 ```bash
 git clone https://github.com/ninodeo/task-app.git
-cd task-manager
+cd task-app
 ```
 
 2. **Copy `.env` File**
@@ -83,7 +83,7 @@ exit
 
 ```bash
 git clone https://github.com/ninodeo/task-app.git
-cd task-manager/src
+cd task-app
 ```
 
 2. **Install PHP & Node Dependencies**
